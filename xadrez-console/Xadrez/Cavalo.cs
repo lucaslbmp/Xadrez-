@@ -3,9 +3,9 @@ using tabuleiro;
 
 namespace xadrez
 {
-    class Rei : Peca
+    class Cavalo : Peca
     {
-        public Rei(Tabuleiro tab, Cor cor) : base(tab, cor) { }
+        public Cavalo(Tabuleiro tab, Cor cor) : base(tab, cor) { }
 
         private bool podeMover(Posicao pos)
         {
@@ -15,55 +15,56 @@ namespace xadrez
 
         public override bool[,] movimentosPossiveis()
         {
-            bool[,] mat = new bool[tab.linhas,tab.colunas];
+            bool[,] mat = new bool[tab.linhas, tab.colunas];
             Posicao pos = new Posicao(0, 0);
 
-
-            //acima
-            pos.definirValores(posicao.linha - 1,posicao.coluna);
-            if(tab.posicaoValida(pos) && podeMover(pos))
-                mat[pos.linha, pos.coluna] = true;
-
-            //nordeste
-            pos.definirValores(posicao.linha - 1, posicao.coluna + 1);
+            //01:00
+            pos.definirValores(posicao.linha - 2, posicao.coluna + 1);
             if (tab.posicaoValida(pos) && podeMover(pos))
                 mat[pos.linha, pos.coluna] = true;
 
-            //direita
-            pos.definirValores(posicao.linha, posicao.coluna + 1);
+            //02:00
+            pos.definirValores(posicao.linha - 1, posicao.coluna + 2);
             if (tab.posicaoValida(pos) && podeMover(pos))
                 mat[pos.linha, pos.coluna] = true;
 
-            //sudeste
-            pos.definirValores(posicao.linha + 1, posicao.coluna + 1);
+
+
+            //04:00
+            pos.definirValores(posicao.linha + 1, posicao.coluna + 2);
             if (tab.posicaoValida(pos) && podeMover(pos))
                 mat[pos.linha, pos.coluna] = true;
 
-            //abaixo
-            pos.definirValores(posicao.linha + 1, posicao.coluna);
+            //05:00
+            pos.definirValores(posicao.linha + 2, posicao.coluna + 1);
             if (tab.posicaoValida(pos) && podeMover(pos))
                 mat[pos.linha, pos.coluna] = true;
 
-            //sudoeste
-            pos.definirValores(posicao.linha + 1, posicao.coluna - 1);
+            //07:00
+            pos.definirValores(posicao.linha + 2, posicao.coluna - 1);
             if (tab.posicaoValida(pos) && podeMover(pos))
                 mat[pos.linha, pos.coluna] = true;
 
-            //esqueda
-            pos.definirValores(posicao.linha, posicao.coluna - 1);
+            //08:00
+            pos.definirValores(posicao.linha + 1, posicao.coluna - 2);
             if (tab.posicaoValida(pos) && podeMover(pos))
                 mat[pos.linha, pos.coluna] = true;
 
-            //noroeste
-            pos.definirValores(posicao.linha - 1, posicao.coluna - 1);
+            //10:00
+            pos.definirValores(posicao.linha - 1, posicao.coluna - 2);
             if (tab.posicaoValida(pos) && podeMover(pos))
                 mat[pos.linha, pos.coluna] = true;
 
+            //11:00
+            pos.definirValores(posicao.linha - 2, posicao.coluna - 1);
+            if (tab.posicaoValida(pos) && podeMover(pos))
+                mat[pos.linha, pos.coluna] = true;
             return mat;
-        }
 
-        public override string ToString() { 
-            return " R";
+        }
+        public override string ToString()
+        {
+            return " C";
         }
     }
 }
